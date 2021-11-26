@@ -1,3 +1,7 @@
-exchange_rateapi:
-#  resource: "@EvrinomaExchangeRateBundle/Controller/ExchangeRateApiController.php"
+exchange_rate_api:
+  resource: "@EvrinomaExchangeRateBundle/Controller/RateApiController.php"
+  type: annotation
+
+#exchange_type_api:
+#  resource: "@EvrinomaExchangeRateBundle/Controller/TypeApiController.php"
 #  type: annotation
