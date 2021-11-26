@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Evrinoma\ExchangeRateBundle\Exception;
+namespace Evrinoma\ExchangeRateBundle\Exception\Type;
 
 
 class TypeCannotBeRemovedException extends \Exception

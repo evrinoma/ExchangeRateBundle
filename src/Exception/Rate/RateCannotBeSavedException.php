@@ -1,6 +1,6 @@
 <?php
 
-namespace Evrinoma\ExchangeRateBundle\Exception;
+namespace Evrinoma\ExchangeRateBundle\Exception\Rate;
 
 class RateCannotBeSavedException extends \Exception
 {
