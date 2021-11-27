@@ -64,10 +64,10 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *               example={
      *                  "class":"Evrinoma\ExchangeRateBundle\Dto\RateApiDto",
      *                  "base": {
-     *                            "identity":"EUR"
+     *                            "id":"1"
      *                       },
      *                  "type": {
-     *                            "identity":"GBP"
+     *                            "id":"2"
      *                       },
      *                  "value": "0.846316",
      *                  "timestamp": "1637935744"
@@ -122,10 +122,10 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *                  "class":"Evrinoma\ExchangeRateBundle\Dto\RateApiDto",
      *                  "id":"48",
      *                  "base": {
-     *                            "identity":"EUR"
+     *                            "id":"1"
      *                       },
      *                  "type": {
-     *                            "identity":"GBP"
+     *                            "id":"2"
      *                       },
      *                  "value": "0.846316",
      *                  "timestamp": "1637935744"
