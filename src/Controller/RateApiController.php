@@ -63,15 +63,19 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ExchangeRateBundle\Dto\RateApiDto",
-     *                  "id":"48",
+     *                  "base": {
+     *                            "identity":"EUR"
+     *                       },
      *                  "type": {
      *                            "identity":"GBP"
      *                       },
+     *                  "value": "0.846316"
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\RateApiDto"),
-     *               @OA\Property(property="id",type="string"),
-     *               @OA\Property(property="description",type="string"),
+     *               @OA\Property(property="value",type="number"),
+     *               @OA\Property(property="base",type="object"),
+     *               @OA\Property(property="type",type="object")
      *            )
      *         )
      *     )
@@ -114,15 +118,21 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ExchangeRateBundle\Dto\RateApiDto",
-     *                  "active": "b",
      *                  "id":"48",
-     *                  "description":"Интертех",
+     *                  "base": {
+     *                            "identity":"EUR"
+     *                       },
+     *                  "type": {
+     *                            "identity":"GBP"
+     *                       },
+     *                  "value": "0.846316"
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\RateApiDto"),
      *               @OA\Property(property="id",type="string"),
-     *               @OA\Property(property="description",type="string"),
-     *               @OA\Property(property="active",type="string")
+     *               @OA\Property(property="value",type="number"),
+     *               @OA\Property(property="base",type="object"),
+     *               @OA\Property(property="type",type="object")
      *            )
      *         )
      *     )
@@ -240,12 +250,38 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *         )
      *     ),
      *      @OA\Parameter(
-     *         description="description",
+     *         description="value",
      *         in="query",
-     *         name="description",
+     *         name="value",
      *         @OA\Schema(
-     *           type="string",
+     *           type="number",
      *         )
+     *     ),
+     *      @OA\Parameter(
+     *         name="base[identity]",
+     *         in="query",
+     *         description="Base Identity",
+     *         @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  type="string",
+     *                  ref=@Model(type=Evrinoma\ExchangeRateBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
+     *              ),
+     *          ),
+     *         style="form"
+     *     ),
+     *     @OA\Parameter(
+     *         name="type[identity]",
+     *         in="query",
+     *         description="Type Identity",
+     *         @OA\Schema(
+     *              type="array",
+     *              @OA\Items(
+     *                  type="string",
+     *                  ref=@Model(type=Evrinoma\ExchangeRateBundle\Form\Rest\TypeChoiceType::class, options={"data":"identity"})
+     *              ),
+     *          ),
+     *         style="form"
      *     )
      * )
      * @OA\Response(response=200,description="Return rate")
