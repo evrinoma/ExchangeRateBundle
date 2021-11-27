@@ -5,10 +5,9 @@ namespace Evrinoma\ExchangeRateBundle\Model\Rate;
 
 use Evrinoma\ExchangeRateBundle\Model\Type\TypeInterface;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtInterface;
-use Evrinoma\UtilsBundle\Entity\IdentityInterface;
 use Evrinoma\UtilsBundle\Entity\IdInterface;
 
-interface RateInterface extends CreateUpdateAtInterface, IdInterface, IdentityInterface
+interface RateInterface extends CreateUpdateAtInterface, IdInterface
 {
 //region SECTION: Getters/Setters
     /**
@@ -34,6 +33,18 @@ interface RateInterface extends CreateUpdateAtInterface, IdInterface, IdentityIn
      * @return RateInterface
      */
     public function setBase(TypeInterface $base): RateInterface;
+
+    /**
+     * @param \DateTimeImmutable $created
+     *
+     * @return RateInterface
+     */
+    public function setCreated(\DateTimeImmutable $created): RateInterface;
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreated(): \DateTimeImmutable;
 
     /**
      * @return float

@@ -4,7 +4,6 @@ namespace Evrinoma\ExchangeRateBundle\Model\Rate;
 
 use Evrinoma\ExchangeRateBundle\Model\Type\TypeInterface;
 use Evrinoma\UtilsBundle\Entity\CreateUpdateAtTrait;
-use Evrinoma\UtilsBundle\Entity\IdentityTrait;
 use Evrinoma\UtilsBundle\Entity\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,13 +11,20 @@ use Doctrine\ORM\Mapping as ORM;
  * Class AbstractRate
  *
  * @ORM\MappedSuperclass
- * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_rate", columns={"created_at", "base_id", "type_id"})})
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_rate", columns={"created", "base_id", "type_id"})})
  */
 abstract class AbstractRate implements RateInterface
 {
-    use IdTrait, CreateUpdateAtTrait, IdentityTrait;
+    use IdTrait, CreateUpdateAtTrait;
 
 //region SECTION: Fields
+    /**
+     * @var \DateTimeImmutable
+     *
+     * @ORM\Column(name="created", type="datetime_immutable", nullable=false)
+     */
+    protected $created;
+
     /**
      * @var TypeInterface
      *
@@ -44,7 +50,27 @@ abstract class AbstractRate implements RateInterface
 //endregion Fields
 
 //region SECTION: Getters/Setters
-      /**
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreated(): \DateTimeImmutable
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTimeImmutable $created
+     *
+     * @return RateInterface
+     */
+    public function setCreated(\DateTimeImmutable $created): RateInterface
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
      * @return TypeInterface
      */
     public function getType(): TypeInterface
