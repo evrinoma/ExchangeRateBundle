@@ -1,6 +1,6 @@
 <?php
 
-namespace Evrinoma\ExchangeRateBundle\Mediator\type;
+namespace Evrinoma\ExchangeRateBundle\Mediator\Type;
 
 use Evrinoma\UtilsBundle\Mediator\AbstractCommandMediator;
 use Evrinoma\ExchangeRateBundle\Model\Type\TypeInterface;
