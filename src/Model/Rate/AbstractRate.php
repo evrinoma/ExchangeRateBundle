@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class AbstractRate
  *
  * @ORM\MappedSuperclass
- * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_rate", columns={"created_at", "type"})})
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="idx_rate", columns={"created_at", "base_id", "type_id"})})
  */
 abstract class AbstractRate implements RateInterface
 {

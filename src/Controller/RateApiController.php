@@ -64,7 +64,9 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *               example={
      *                  "class":"Evrinoma\ExchangeRateBundle\Dto\RateApiDto",
      *                  "id":"48",
-     *                  "description":"Интертех",
+     *                  "type": {
+     *                            "identity":"GBP"
+     *                       },
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\RateApiDto"),
