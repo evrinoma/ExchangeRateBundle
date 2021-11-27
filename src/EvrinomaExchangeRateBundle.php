@@ -2,7 +2,7 @@
 
 namespace Evrinoma\ExchangeRateBundle;
 
-use Evrinoma\EvrinomaExchangeRateBundle\DependencyInjection\Compiler\DecoratorPass;
+use Evrinoma\ExchangeRateBundle\DependencyInjection\Compiler\DecoratorPass;
 use Evrinoma\ExchangeRateBundle\DependencyInjection\Compiler\Constraint\RatePass;
 use Evrinoma\ExchangeRateBundle\DependencyInjection\Compiler\Constraint\TypePass;
 use Evrinoma\ExchangeRateBundle\DependencyInjection\Compiler\MapEntityPass;

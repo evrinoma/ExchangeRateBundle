@@ -1,6 +1,6 @@
 <?php
 
-namespace Evrinoma\EvrinomaExchangeRateBundle\DependencyInjection\Compiler;
+namespace Evrinoma\ExchangeRateBundle\DependencyInjection\Compiler;
 
 
 use Evrinoma\ExchangeRateBundle\EvrinomaExchangeRateBundle;
