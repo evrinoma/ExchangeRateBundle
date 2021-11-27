@@ -1,0 +1,14 @@
+services:
+  evrinoma.exchange_rate.constraint.rate.created:
+    class: Evrinoma\ExchangeRateBundle\Constraint\Rate\Created
+
+  evrinoma.exchange_rate.constraint.rate.value:
+    class: Evrinoma\ExchangeRateBundle\Constraint\Rate\Value
+
+  evrinoma.exchange_rate.constraint.rate.base:
+    class: Evrinoma\ExchangeRateBundle\Constraint\Rate\Base
+
+  evrinoma.exchange_rate.constraint.rate.type:
+    class: Evrinoma\ExchangeRateBundle\Constraint\Rate\Type
+
+

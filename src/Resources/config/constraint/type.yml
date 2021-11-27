@@ -1,0 +1,3 @@
+services:
+  evrinoma.exchange_rate.constraint.type.identity:
+    class: Evrinoma\ExchangeRateBundle\Constraint\Type\Identity

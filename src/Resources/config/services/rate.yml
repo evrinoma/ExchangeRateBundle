@@ -1,1 +1,79 @@
 services:
+  Evrinoma\ExchangeRateBundle\Controller\RateApiController:
+    alias: evrinoma.exchange_rate.rate.api.controller
+    public: true
+
+  evrinoma.exchange_rate.rate.api.controller:
+    class: Evrinoma\ExchangeRateBundle\Controller\RateApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.exchange_rate.rate.command.manager'
+      - '@evrinoma.exchange_rate.rate.query.manager'
+    autowire: true
+
+  evrinoma.exchange_rate.rate.factory:
+    class: Evrinoma\ExchangeRateBundle\Factory\RateFactory
+    public: true
+    arguments:
+
+  evrinoma.exchange_rate.rate.repository:
+    class: Evrinoma\ExchangeRateBundle\Repository\Rate\RateRepository
+    public: true
+    arguments:
+
+  evrinoma.exchange_rate.rate.command.manager:
+    class: Evrinoma\ExchangeRateBundle\Manager\Rate\CommandManager
+    arguments:
+      - '@evrinoma.exchange_rate.rate.validator'
+      - '@evrinoma.exchange_rate.rate.repository'
+      - '@evrinoma.exchange_rate.rate.factory'
+      - '@evrinoma.exchange_rate.rate.command.mediator'
+      - '@evrinoma.exchange_rate.type.query.manager'
+
+  evrinoma.exchange_rate.rate.query.manager:
+    class: Evrinoma\ExchangeRateBundle\Manager\Rate\QueryManager
+    arguments:
+      - '@evrinoma.exchange_rate.rate.repository'
+
+  evrinoma.exchange_rate.rate.validator:
+    class: Evrinoma\ExchangeRateBundle\Validator\RateValidator
+    public: true
+    arguments:
+
+  Evrinoma\ExchangeRateBundle\Validator\RateValidator:
+    alias: evrinoma.exchange_rate.rate.validator
+
+  evrinoma.exchange_rate.rate.command.mediator:
+    class: Evrinoma\ExchangeRateBundle\Mediator\Rate\CommandMediator
+    public: true
+    arguments:
+
+  Evrinoma\ExchangeRateBundle\Mediator\Rate\CommandMediator:
+    alias: eevrinoma.exchange_rate.rate.command.mediator
+
+  Evrinoma\ExchangeRateBundle\Mediator\Rate\CommandMediatorInterface:
+    alias: evrinoma.exchange_rate.rate.command.mediator
+
+  evrinoma.exchange_rate.rate.query.mediator:
+    class: Evrinoma\ExchangeRateBundle\Mediator\Rate\QueryMediator
+    public: true
+    arguments:
+
+  Evrinoma\ExchangeRateBundle\Mediator\Rate\QueryMediator:
+    alias: evrinoma.exchange_rate.rate.query.mediator
+
+  Evrinoma\ExchangeRateBundle\Mediator\Rate\QueryMediatorInterface:
+    alias: evrinoma.exchange_rate.rate.query.mediator
+
+#  evrinoma.exchange_rate.form.rest.rate:
+#    class: Evrinoma\ExchangeRateBundle\Form\Rest\RateChoiceRate
+#    arguments:
+#      - '@evrinoma.exchange_rate.rate.query.manager'
+#    tags: { - name: form.rate }
+#
+#  Evrinoma\ExchangeRateBundle\Form\Rest\RateChoiceRate:
+#    alias: evrinoma.exchange_rate.form.rest.rate
+#    public: true
+
