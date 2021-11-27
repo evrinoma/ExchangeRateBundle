@@ -3,7 +3,9 @@
 namespace Evrinoma\ExchangeRateBundle\Manager\Rate;
 
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDtoInterface;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeCreatedException;
 use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeRemovedException;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeSavedException;
 use Evrinoma\ExchangeRateBundle\Exception\Rate\RateInvalidException;
 use Evrinoma\ExchangeRateBundle\Exception\Rate\RateNotFoundException;
 use Evrinoma\ExchangeRateBundle\Model\Rate\RateInterface;
@@ -17,6 +19,7 @@ interface CommandManagerInterface
      *
      * @return RateInterface
      * @throws RateInvalidException
+     * @throws RateCannotBeCreatedException
      */
     public function post(RateApiDtoInterface $dto): RateInterface;
 
@@ -26,6 +29,7 @@ interface CommandManagerInterface
      * @return RateInterface
      * @throws RateInvalidException
      * @throws RateNotFoundException
+     * @throws RateCannotBeSavedException
      */
     public function put(RateApiDtoInterface $dto): RateInterface;
 

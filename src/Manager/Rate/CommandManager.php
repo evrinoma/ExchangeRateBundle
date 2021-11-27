@@ -3,7 +3,9 @@
 namespace Evrinoma\ExchangeRateBundle\Manager\Rate;
 
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDtoInterface;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeCreatedException;
 use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeRemovedException;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeSavedException;
 use Evrinoma\ExchangeRateBundle\Exception\Rate\RateInvalidException;
 use Evrinoma\ExchangeRateBundle\Exception\Rate\RateNotFoundException;
 use Evrinoma\ExchangeRateBundle\Factory\RateFactoryInterface;
@@ -51,10 +53,23 @@ final class CommandManager implements CommandManagerInterface, RestInterface
      *
      * @return RateInterface
      * @throws RateInvalidException
+     * @throws RateCannotBeCreatedException
      */
     public function post(RateApiDtoInterface $dto): RateInterface
     {
         $rate = $this->factory->create($dto);
+
+        try {
+            $rate->setBase($this->typeQueryManager->proxy($dto->getBaseApiDto()));
+        } catch (\Exception $e) {
+            throw new RateCannotBeCreatedException($e->getMessage());
+        }
+
+        try {
+            $rate->setType($this->typeQueryManager->proxy($dto->getTypeApiDto()));
+        } catch (\Exception $e) {
+            throw new RateCannotBeCreatedException($e->getMessage());
+        }
 
         $this->mediator->onCreate($dto, $rate);
 
@@ -78,6 +93,7 @@ final class CommandManager implements CommandManagerInterface, RestInterface
      * @return RateInterface
      * @throws RateInvalidException
      * @throws RateNotFoundException
+     * @throws RateCannotBeSavedException
      */
     public function put(RateApiDtoInterface $dto): RateInterface
     {
@@ -87,8 +103,21 @@ final class CommandManager implements CommandManagerInterface, RestInterface
             throw $e;
         }
 
+        try {
+            $rate->setBase($this->typeQueryManager->proxy($dto->getBaseApiDto()));
+        } catch (\Exception $e) {
+            throw new RateCannotBeSavedException($e->getMessage());
+        }
+
+        try {
+            $rate->setType($this->typeQueryManager->proxy($dto->getTypeApiDto()));
+        } catch (\Exception $e) {
+            throw new RateCannotBeSavedException($e->getMessage());
+        }
+
         $rate
-            ->setIdentity($dto->getIdentity())
+            ->setCreated($dto->getCreated())
+            ->setValue($dto->getValue())
             ->setUpdatedAt(new \DateTimeImmutable());
 
         $this->mediator->onUpdate($dto, $rate);
