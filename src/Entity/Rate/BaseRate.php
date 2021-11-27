@@ -5,8 +5,6 @@ namespace Evrinoma\ExchangeRateBundle\Entity\Rate;
 
 use Doctrine\ORM\Mapping as ORM;
 use Evrinoma\ExchangeRateBundle\Model\Rate\AbstractRate;
-use Evrinoma\UtilsBundle\Entity\IdentityInterface;
-use Evrinoma\UtilsBundle\Entity\IdentityTrait;
 
 /**
  * Class BaseRate
@@ -14,7 +12,6 @@ use Evrinoma\UtilsBundle\Entity\IdentityTrait;
  * @ORM\Table(name="eexchange_rate")
  * @ORM\Entity()
  */
-class BaseRate extends AbstractRate implements IdentityInterface
+class BaseRate extends AbstractRate
 {
-    use IdentityTrait;
 }
