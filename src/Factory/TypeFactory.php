@@ -16,7 +16,8 @@ final class TypeFactory implements TypeFactoryInterface
         $type = new self::$entityClass;
 
         $type
-            ->setIdentity($dto->getIdentity());
+            ->setIdentity(trim($dto->getIdentity()))
+        ;
 
         return $type;
     }

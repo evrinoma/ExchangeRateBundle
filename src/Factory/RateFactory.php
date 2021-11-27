@@ -19,6 +19,8 @@ final class RateFactory implements RateFactoryInterface
         $rate = new self::$entityClass;
 
         $rate
+            ->setCreated($dto->getCreated())
+            ->setValue($dto->getValue())
             ->setCreatedAt(new \DateTimeImmutable())
             ;
 
