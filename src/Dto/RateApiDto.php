@@ -136,7 +136,7 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
             $value   = $request->get(ModelInterface::VALUE);
 
             if ($created) {
-                $this->setCreated(new \DateTimeImmutable($created));
+                $this->setCreated((new \DateTimeImmutable)->setTimestamp((int)$created));
             }
 
             if ($value) {
