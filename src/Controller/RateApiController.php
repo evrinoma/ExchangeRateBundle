@@ -69,10 +69,12 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *                  "type": {
      *                            "identity":"GBP"
      *                       },
-     *                  "value": "0.846316"
+     *                  "value": "0.846316",
+     *                  "timestamp": "1637935744"
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\RateApiDto"),
+     *               @OA\Property(property="timestamp",type="string"),
      *               @OA\Property(property="value",type="number"),
      *               @OA\Property(property="base",type="object"),
      *               @OA\Property(property="type",type="object")
@@ -125,11 +127,13 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *                  "type": {
      *                            "identity":"GBP"
      *                       },
-     *                  "value": "0.846316"
+     *                  "value": "0.846316",
+     *                  "timestamp": "1637935744"
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\RateApiDto"),
      *               @OA\Property(property="id",type="string"),
+     *               @OA\Property(property="timestamp",type="string"),
      *               @OA\Property(property="value",type="number"),
      *               @OA\Property(property="base",type="object"),
      *               @OA\Property(property="type",type="object")
