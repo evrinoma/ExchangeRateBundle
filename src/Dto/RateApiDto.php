@@ -40,28 +40,58 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 //region SECTION: Protected
     /**
      * @param float $value
+     *
+     * @return RateApiDtoInterface
      */
-    protected function setValue(float $value): void
+    protected function setValue(float $value): RateApiDtoInterface
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**
-     * @param \DateTimeImmutable|null $created
+     * @param \DateTimeImmutable $created
+     *
+     * @return RateApiDtoInterface
      */
-    protected function setCreated(\DateTimeImmutable $created): void
+    protected function setCreated(\DateTimeImmutable $created): RateApiDtoInterface
     {
         $this->created = $created;
+
+        return $this;
     }
 //endregion Protected
+
+//region SECTION: Public
+    /**
+     * @return bool
+     */
+    public function hasCreated(): bool
+    {
+        return $this->created !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasValue(): bool
+    {
+        return $this->value !== null;
+    }
+//endregion Public
 
 //region SECTION: Private
     /**
      * @param int|null $id
+     *
+     * @return RateApiDtoInterface
      */
-    private function setId(?int $id): void
+    private function setId(?int $id): RateApiDtoInterface
     {
         $this->id = $id;
+
+        return $this;
     }
 //endregion Private
 
@@ -120,22 +150,6 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     /**
      * @return bool
      */
-    public function hasCreated(): bool
-    {
-        return $this->created !== null;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasValue(): bool
-    {
-        return $this->value !== null;
-    }
-
-    /**
-     * @return bool
-     */
     public function hasBaseApiDto(): bool
     {
         return $this->baseApiDto !== null;
@@ -158,27 +172,39 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     }
 
     /**
-     * @param RangeApiDto|null $baseApiDto
+     * @param RangeApiDto|null $rangeApiDto
+     *
+     * @return RateApiDtoInterface
      */
-    public function setRangeApiDto(?RangeApiDto $rangeApiDto): void
+    public function setRangeApiDto(?RangeApiDto $rangeApiDto): RateApiDtoInterface
     {
         $this->rangeApiDto = $rangeApiDto;
+
+        return $this;
     }
 
     /**
      * @param TypeApiDto|null $baseApiDto
+     *
+     * @return RateApiDtoInterface
      */
-    public function setBaseApiDto(?TypeApiDto $baseApiDto): void
+    public function setBaseApiDto(?TypeApiDto $baseApiDto): RateApiDtoInterface
     {
         $this->baseApiDto = $baseApiDto;
+
+        return $this;
     }
 
     /**
      * @param TypeApiDto|null $typeApiDto
+     *
+     * @return RateApiDtoInterface
      */
-    public function setTypeApiDto(?TypeApiDto $typeApiDto): void
+    public function setTypeApiDto(?TypeApiDto $typeApiDto): RateApiDtoInterface
     {
         $this->typeApiDto = $typeApiDto;
+
+        return $this;
     }
 
     public function toDto(Request $request): DtoInterface

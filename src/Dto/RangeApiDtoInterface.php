@@ -6,24 +6,32 @@ use Evrinoma\DtoBundle\Dto\DtoInterface;
 
 interface RangeApiDtoInterface extends DtoInterface
 {
-    /**
-     * @return \DateTimeImmutable|null
-     */
-    public function getTo(): ?\DateTimeImmutable;
-    /**
-     * @return \DateTimeImmutable|null
-     */
-    public function getFrom(): ?\DateTimeImmutable;
+//region SECTION: Public
     /**
      * @return bool
      */
     public function hasTo(): bool;
+
     /**
      * @return bool
      */
     public function hasFrom(): bool;
+
     /**
      * @return bool
      */
     public function hasRange(): bool;
+//endregion Public
+
+//region SECTION: Getters/Setters
+    /**
+     * @return \DateTimeImmutable|null
+     */
+    public function getTo(): ?\DateTimeImmutable;
+
+    /**
+     * @return \DateTimeImmutable|null
+     */
+    public function getFrom(): ?\DateTimeImmutable;
+//endregion Getters/Setters
 }
