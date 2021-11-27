@@ -21,8 +21,7 @@ final class RateFactory implements RateFactoryInterface
         $rate
             ->setCreated($dto->getCreated())
             ->setValue($dto->getValue())
-            ->setCreatedAt(new \DateTimeImmutable())
-            ;
+            ->setCreatedAt(new \DateTimeImmutable());
 
         return $rate;
     }
