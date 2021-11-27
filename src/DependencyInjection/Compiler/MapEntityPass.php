@@ -5,6 +5,7 @@ namespace Evrinoma\ExchangeRateBundle\DependencyInjection\Compiler;
 use Evrinoma\ExchangeRateBundle\DependencyInjection\EvrinomaExchangeRateExtension;
 use Evrinoma\ExchangeRateBundle\Entity\Rate\BaseRate;
 use Evrinoma\ExchangeRateBundle\Entity\Type\BaseType;
+use Evrinoma\ExchangeRateBundle\EvrinomaExchangeRateBundle;
 use Evrinoma\ExchangeRateBundle\Model\Rate\RateInterface;
 use Evrinoma\ExchangeRateBundle\Model\Type\TypeInterface;
 use Evrinoma\UtilsBundle\DependencyInjection\Compiler\AbstractMapEntity;
@@ -27,16 +28,16 @@ class MapEntityPass extends AbstractMapEntity implements CompilerPassInterface
 
         $this->cleanMetadata($driver, [EvrinomaExchangeRateExtension::ENTITY]);
 
-        $entityCode = $container->getParameter('evrinoma.code.entity_code');
+        $entityType = $container->getParameter('evrinoma.'.EvrinomaExchangeRateBundle::EXCHANGE_RATE_BUNDLE.'.entity_type');
 
-        if ((strpos($entityCode, EvrinomaExchangeRateExtension::ENTITY) !== false)) {
+        if ((strpos($entityType, EvrinomaExchangeRateExtension::ENTITY) !== false)) {
             $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Code', '%s/Entity/Type');
             $this->addResolveTargetEntity([BaseType::class => TypeInterface::class,], false);
         }
 
-        $entityCode = $container->getParameter('evrinoma.code.entity_bind');
+        $entityRate = $container->getParameter('evrinoma.'.EvrinomaExchangeRateBundle::EXCHANGE_RATE_BUNDLE.'.entity_rate');
 
-        if ((strpos($entityCode, EvrinomaExchangeRateExtension::ENTITY) !== false)) {
+        if ((strpos($entityRate, EvrinomaExchangeRateExtension::ENTITY) !== false)) {
             $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Bind', '%s/Entity/Rate');
             $this->addResolveTargetEntity([BaseRate::class => RateInterface::class,], false);
         }
