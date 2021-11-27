@@ -43,6 +43,12 @@ abstract class AbstractHandler implements HandlerInterface, RunInterface
 
         return $this;
     }
-//endregion Public
 
+//endregion Public
+//region SECTION: Getters/Setters
+    public function getRaw(): array
+    {
+        return $this->data;
+    }
+//endregion Getters/Setters
 }
