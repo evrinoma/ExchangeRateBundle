@@ -53,9 +53,9 @@ final class RateApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Post("/api/rate/create", options={"expose"=true}, name="api_create_rate")
+     * @Rest\Post("/api/exchange_rate/rate/create", options={"expose"=true}, name="api_create_rate")
      * @OA\Post(
-     *     tags={"rate"},
+     *     tags={"exchange_rate"},
      *     description="the method perform create rate",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -102,9 +102,9 @@ final class RateApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Put("/api/rate/save", options={"expose"=true}, name="api_save_rate")
+     * @Rest\Put("/api/exchange_rate/rate/save", options={"expose"=true}, name="api_save_rate")
      * @OA\Put(
-     *     tags={"rate"},
+     *     tags={"exchange_rate"},
      *     description="the method perform save rate for current entity",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -156,9 +156,9 @@ final class RateApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Delete("/api/rate/delete", options={"expose"=true}, name="api_delete_rate")
+     * @Rest\Delete("/api/exchange_rate/rate/delete", options={"expose"=true}, name="api_delete_rate")
      * @OA\Delete(
-     *     tags={"rate"},
+     *     tags={"exchange_rate"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
@@ -215,9 +215,9 @@ final class RateApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Get("/api/rate/criteria", options={"expose"=true}, name="api_rate_criteria")
+     * @Rest\Get("/api/exchange_rate/rate/criteria", options={"expose"=true}, name="api_rate_criteria")
      * @OA\Get(
-     *     tags={"rate"},
+     *     tags={"exchange_rate"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
@@ -265,9 +265,9 @@ final class RateApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Get("/api/rate", options={"expose"=true}, name="api_rate")
+     * @Rest\Get("/api/exchange_rate/rate", options={"expose"=true}, name="api_rate")
      * @OA\Get(
-     *     tags={"rate"},
+     *     tags={"exchange_rate"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",

@@ -53,9 +53,9 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Post("/api/type/create", options={"expose"=true}, name="api_create_type")
+     * @Rest\Post("/api/exchange_rate/type/create", options={"expose"=true}, name="api_create_type")
      * @OA\Post(
-     *     tags={"type"},
+     *     tags={"exchange_rate"},
      *     description="the method perform create type",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -102,9 +102,9 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Put("/api/type/save", options={"expose"=true}, name="api_save_type")
+     * @Rest\Put("/api/exchange_rate/type/save", options={"expose"=true}, name="api_save_type")
      * @OA\Put(
-     *     tags={"type"},
+     *     tags={"exchange_rate"},
      *     description="the method perform save type for current entity",
      *     @OA\RequestBody(
      *         @OA\MediaType(
@@ -156,9 +156,9 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Delete("/api/type/delete", options={"expose"=true}, name="api_delete_type")
+     * @Rest\Delete("/api/exchange_rate/type/delete", options={"expose"=true}, name="api_delete_type")
      * @OA\Delete(
-     *     tags={"type"},
+     *     tags={"exchange_rate"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
@@ -215,9 +215,9 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Get("/api/type/criteria", options={"expose"=true}, name="api_type_criteria")
+     * @Rest\Get("/api/exchange_rate/type/criteria", options={"expose"=true}, name="api_type_criteria")
      * @OA\Get(
-     *     tags={"type"},
+     *     tags={"exchange_rate"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
@@ -265,9 +265,9 @@ final class TypeApiController extends AbstractApiController implements ApiContro
     }
 
     /**
-     * @Rest\Get("/api/type", options={"expose"=true}, name="api_type")
+     * @Rest\Get("/api/exchange_rate/type", options={"expose"=true}, name="api_type")
      * @OA\Get(
-     *     tags={"type"},
+     *     tags={"exchange_rate"},
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
