@@ -5,9 +5,9 @@ namespace Evrinoma\ExchangeRateBundle\Controller;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDtoInterface;
-use Evrinoma\ExchangeRateBundle\Exception\RateCannotBeSavedException;
-use Evrinoma\ExchangeRateBundle\Exception\RateInvalidException;
-use Evrinoma\ExchangeRateBundle\Exception\RateNotFoundException;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateCannotBeSavedException;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateInvalidException;
+use Evrinoma\ExchangeRateBundle\Exception\Rate\RateNotFoundException;
 use Evrinoma\ExchangeRateBundle\Manager\Rate\CommandManagerInterface;
 use Evrinoma\ExchangeRateBundle\Manager\Rate\QueryManagerInterface;
 use Evrinoma\DtoBundle\Factory\FactoryDtoInterface;

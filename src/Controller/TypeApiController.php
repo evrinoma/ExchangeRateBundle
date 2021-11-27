@@ -5,9 +5,10 @@ namespace Evrinoma\ExchangeRateBundle\Controller;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface;
-use Evrinoma\ExchangeRateBundle\Exception\TypeCannotBeSavedException;
-use Evrinoma\ExchangeRateBundle\Exception\TypeInvalidException;
-use Evrinoma\ExchangeRateBundle\Exception\TypeNotFoundException;
+use Evrinoma\ExchangeRateBundle\Exception\Type\TypeCannotBeCreatedException;
+use Evrinoma\ExchangeRateBundle\Exception\Type\TypeCannotBeSavedException;
+use Evrinoma\ExchangeRateBundle\Exception\Type\TypeInvalidException;
+use Evrinoma\ExchangeRateBundle\Exception\Type\TypeNotFoundException;
 use Evrinoma\ExchangeRateBundle\Manager\Type\CommandManagerInterface;
 use Evrinoma\ExchangeRateBundle\Manager\Type\QueryManagerInterface;
 use Evrinoma\DtoBundle\Factory\FactoryDtoInterface;
@@ -62,11 +63,11 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *             mediaType="application/json",
      *             @OA\Schema(
      *               example={
-     *                  "class":"Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
+     *                  "class":"Evrinoma\ExchangeRateBundle\Dto\TypeApiDto",
      *                  "identity":"RUB",
      *                  },
      *               type="object",
-     *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto"),
+     *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\TypeApiDto"),
      *               @OA\Property(property="identity",type="string")
      *            )
      *         )
@@ -109,12 +110,12 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *             mediaType="application/json",
      *             @OA\Schema(
      *               example={
-     *                  "class":"Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
+     *                  "class":"Evrinoma\ExchangeRateBundle\Dto\TypeApiDto",
      *                  "id":"48",
      *                  "identity":"EUR",
      *                  },
      *               type="object",
-     *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto"),
+     *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeRateBundle\Dto\TypeApiDto"),
      *               @OA\Property(property="id",type="string"),
      *               @OA\Property(property="identity",type="string")
      *            )
@@ -162,7 +163,7 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *         required=true,
      *         @OA\Schema(
      *           type="string",
-     *           default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
+     *           default="Evrinoma\ExchangeRateBundle\Dto\TypeApiDto",
      *           readOnly=true
      *         )
      *     ),
@@ -221,7 +222,7 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *         required=true,
      *         @OA\Schema(
      *           type="string",
-     *           default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
+     *           default="Evrinoma\ExchangeRateBundle\Dto\TypeApiDto",
      *           readOnly=true
      *         )
      *     ),
@@ -271,7 +272,7 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *         required=true,
      *         @OA\Schema(
      *           type="string",
-     *           default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
+     *           default="Evrinoma\ExchangeRateBundle\Dto\TypeApiDto",
      *           readOnly=true
      *         )
      *     ),
