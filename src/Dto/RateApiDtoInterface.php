@@ -21,6 +21,11 @@ interface RateApiDtoInterface extends DtoInterface, IdInterface
 
 //region SECTION: Dto
     /**
+     * @return bool
+     */
+    public function hasRangeApiDto(): bool;
+
+    /**
      * @return TypeApiDtoInterface
      */
     public function getBaseApiDto(): TypeApiDtoInterface;
@@ -29,6 +34,11 @@ interface RateApiDtoInterface extends DtoInterface, IdInterface
      * @return TypeApiDtoInterface
      */
     public function getTypeApiDto(): TypeApiDtoInterface;
+
+    /**
+     * @return RangeApiDtoInterface
+     */
+    public function getRangeApiDto(): RangeApiDtoInterface;
 
     /**
      * @return bool

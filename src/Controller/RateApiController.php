@@ -278,6 +278,25 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *              ),
      *          ),
      *         style="form"
+     *     ),
+     *     @OA\Parameter(
+     *         name="range[from]",
+     *         in="query",
+     *         description="Start range",
+     *         @OA\Schema(
+     *           type="number",
+     *           default="1637935744"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         name="range[to]",
+     *         in="query",
+     *         description="End range",
+     *         @OA\Schema(
+     *           type="number",
+     *           default="1647935744"
+     *         )
      *     )
      * )
      * @OA\Response(response=200,description="Return rate")

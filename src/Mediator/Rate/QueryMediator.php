@@ -4,10 +4,10 @@ namespace Evrinoma\ExchangeRateBundle\Mediator\Rate;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\QueryBuilder;
+use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDtoInterface;
 use Evrinoma\ExchangeRateBundle\Repository\AliasInterface;
 use Evrinoma\UtilsBundle\Mediator\AbstractQueryMediator;
-use Evrinoma\DtoBundle\Dto\DtoInterface;
 
 class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterface
 {
@@ -20,7 +20,7 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
     {
         $alias = $this->alias();
         /** @var $dto RateApiDtoInterface */
-        if ($dto->hasTypApiDto() && $dto->getTypeApiDto()->getIdentity()) {
+        if ($dto->hasTypApiDto() && $dto->getTypeApiDto()->hasIdentity()) {
             $aliasType = AliasInterface::TYPE;
             $builder
                 ->leftJoin($alias.'.type', $aliasType)
@@ -29,7 +29,7 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
                 ->setParameter('identityType', $dto->getTypeApiDto()->getIdentity());
         }
         /** @var $dto RateApiDtoInterface */
-        if ($dto->hasBaseApiDto() && $dto->getBaseApiDto()->getIdentity()) {
+        if ($dto->hasBaseApiDto() && $dto->getBaseApiDto()->hasIdentity()) {
             $aliasType = AliasInterface::BASE;
             $builder
                 ->leftJoin($alias.'.base', $aliasType)
@@ -43,9 +43,15 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
                 ->setParameter('value', $dto->getValue());
         }
         if ($dto->hasCreated()) {
+            $builder->andWhere($alias.'.created = :created')
+                ->setParameter('created', $dto->getCreated(), Types::DATETIME_IMMUTABLE);
+        }
+        if ($dto->hasRangeApiDto() && $dto->getRangeApiDto()->hasRange()) {
+            $range = $dto->getRangeApiDto();
             $builder->andWhere($alias.'.created :created >= :last')
-                ->setParameter('created', $dto->getCreated(), Types::DATETIME_IMMUTABLE)
-                ->setParameter('last', new \DateTime(), Types::DATETIME_IMMUTABLE);
+                ->where($alias.'.created BETWEEN :from AND :to')
+                ->setParameter('from', $range->getFrom(), Types::DATETIME_IMMUTABLE)
+                ->setParameter('to', $range->getTo(), Types::DATETIME_IMMUTABLE);
         }
     }
 //endregion Public

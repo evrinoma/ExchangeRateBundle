@@ -26,6 +26,12 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
      */
     private ?TypeApiDto $typeApiDto = null;
 
+    /**
+     * @Dto(class="Evrinoma\ExchangeRateBundle\Dto\RangeApiDto", generator="genRequestRangeApiDto")
+     * @var RangeApiDto|null
+     */
+    private ?RangeApiDto $rangeApiDto = null;
+
     private ?float $value = null;
 
     private ?\DateTimeImmutable $created = null;
@@ -95,6 +101,23 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     }
 
     /**
+     * @return \Generator
+     */
+    public function genRequestRangeApiDto(?Request $request): ?\Generator
+    {
+        if ($request) {
+            $type = $request->get('range');
+            if ($type) {
+                $newRequest                    = $this->getCloneRequest();
+                $type[DtoInterface::DTO_CLASS] = RangeApiDto::class;
+                $newRequest->request->add($type);
+
+                yield $newRequest;
+            }
+        }
+    }
+
+    /**
      * @return bool
      */
     public function hasCreated(): bool
@@ -124,6 +147,22 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     public function hasTypApiDto(): bool
     {
         return $this->typeApiDto !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasRangeApiDto(): bool
+    {
+        return $this->rangeApiDto !== null;
+    }
+
+    /**
+     * @param RangeApiDto|null $baseApiDto
+     */
+    public function setRangeApiDto(?RangeApiDto $rangeApiDto): void
+    {
+        $this->rangeApiDto = $rangeApiDto;
     }
 
     /**
@@ -175,6 +214,11 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     public function getTypeApiDto(): TypeApiDtoInterface
     {
         return $this->typeApiDto;
+    }
+
+    public function getRangeApiDto(): RangeApiDtoInterface
+    {
+        return $this->rangeApiDto;
     }
 //endregion SECTION: Dto
 
