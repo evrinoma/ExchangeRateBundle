@@ -2,10 +2,11 @@
 
 namespace Evrinoma\ExchangeRateBundle\Dto\Preserve;
 
+use Evrinoma\ExchangeRateBundle\Dto\RangeApiDtoInterface as BaseRangeApiDtoInterface;
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDto as BaseRateApiDto;
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDtoInterface as BaseRateApiDtoInterface;
-use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface as BaseTypeApiDtoInterface;
 use Evrinoma\ExchangeRateBundle\Dto\TypeApiDto;
+use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface as BaseTypeApiDtoInterface;
 
 final class RateApiDto extends BaseRateApiDto implements RateApiDtoInterface
 {
@@ -28,6 +29,16 @@ final class RateApiDto extends BaseRateApiDto implements RateApiDtoInterface
     public function setTypeApiDto(?BaseTypeApiDtoInterface $typeApiDto): BaseRateApiDtoInterface
     {
         return parent::setTypeApiDto($typeApiDto);
+    }
+
+    /**
+     * @param BaseRangeApiDtoInterface|null $rangeApiDto
+     *
+     * @return BaseRateApiDtoInterface
+     */
+    public function setRangeApiDto(?BaseRangeApiDtoInterface $rangeApiDto): BaseRateApiDtoInterface
+    {
+        return parent::setRangeApiDto($rangeApiDto);
     }
 //endregion SECTION: Dto
 

@@ -13,5 +13,12 @@ interface TypeApiDtoInterface
      * @return BaseTypeApiDtoInterface
      */
     public function setIdentity(string $identity): BaseTypeApiDtoInterface;
+
+    /**
+     * @param int|null $id
+     *
+     * @return BaseTypeApiDtoInterface
+     */
+    public function setId(?int $id): BaseTypeApiDtoInterface;
 //endregion Getters/Setters
 }

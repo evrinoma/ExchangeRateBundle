@@ -26,21 +26,19 @@ class TypeApiDto extends AbstractDto implements TypeApiDtoInterface
 
         return $this;
     }
-//endregion Protected
 
-//region SECTION: Private
     /**
      * @param int|null $id
      *
      * @return TypeApiDtoInterface
      */
-    private function setId(?int $id): TypeApiDtoInterface
+    protected function setId(?int $id): TypeApiDtoInterface
     {
         $this->id = $id;
 
         return $this;
     }
-//endregion Private
+//endregion Protected
 
 //region SECTION: Dto
     public function toDto(Request $request): DtoInterface

@@ -17,5 +17,15 @@ final class TypeApiDto extends BaseTypeApiDto implements TypeApiDtoInterface
     {
         return parent::setIdentity($identity);
     }
+
+    /**
+     * @param int|null $id
+     *
+     * @return BaseTypeApiDtoInterface
+     */
+    public function setId(?int $id): BaseTypeApiDtoInterface
+    {
+        return parent::setId($id);
+    }
 //endregion Getters/Setters
 }

@@ -61,6 +61,18 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 
         return $this;
     }
+
+    /**
+     * @param int|null $id
+     *
+     * @return RateApiDtoInterface
+     */
+    protected function setId(?int $id): RateApiDtoInterface
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 //endregion Protected
 
 //region SECTION: Public
@@ -80,20 +92,6 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
         return $this->value !== null;
     }
 //endregion Public
-
-//region SECTION: Private
-    /**
-     * @param int|null $id
-     *
-     * @return RateApiDtoInterface
-     */
-    private function setId(?int $id): RateApiDtoInterface
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-//endregion Private
 
 //region SECTION: Dto
     /**
@@ -172,11 +170,11 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     }
 
     /**
-     * @param RangeApiDto|null $rangeApiDto
+     * @param RangeApiDtoInterface|null $rangeApiDto
      *
      * @return RateApiDtoInterface
      */
-    public function setRangeApiDto(?RangeApiDto $rangeApiDto): RateApiDtoInterface
+    public function setRangeApiDto(?RangeApiDtoInterface $rangeApiDto): RateApiDtoInterface
     {
         $this->rangeApiDto = $rangeApiDto;
 
@@ -184,11 +182,11 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     }
 
     /**
-     * @param TypeApiDto|null $baseApiDto
+     * @param TypeApiDtoInterface|null $baseApiDto
      *
      * @return RateApiDtoInterface
      */
-    public function setBaseApiDto(?TypeApiDto $baseApiDto): RateApiDtoInterface
+    public function setBaseApiDto(?TypeApiDtoInterface $baseApiDto): RateApiDtoInterface
     {
         $this->baseApiDto = $baseApiDto;
 
@@ -196,11 +194,11 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     }
 
     /**
-     * @param TypeApiDto|null $typeApiDto
+     * @param TypeApiDtoInterface|null $typeApiDto
      *
      * @return RateApiDtoInterface
      */
-    public function setTypeApiDto(?TypeApiDto $typeApiDto): RateApiDtoInterface
+    public function setTypeApiDto(?TypeApiDtoInterface $typeApiDto): RateApiDtoInterface
     {
         $this->typeApiDto = $typeApiDto;
 
