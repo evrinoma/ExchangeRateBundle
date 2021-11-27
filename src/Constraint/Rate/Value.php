@@ -1,6 +1,6 @@
 <?php
 
-namespace Evrinoma\ExchangeRateBundle\Constraint\Bind;
+namespace Evrinoma\ExchangeRateBundle\Constraint\Rate;
 
 use Evrinoma\UtilsBundle\Constraint\ConstraintInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Evrinoma\ExchangeRateBundle\Constraint\Bind;
+namespace Evrinoma\ExchangeRateBundle\Constraint\Rate;
 
 use Evrinoma\ExchangeRateBundle\Constraint\Common\TypeTrait;
 use Evrinoma\UtilsBundle\Constraint\ConstraintInterface;
