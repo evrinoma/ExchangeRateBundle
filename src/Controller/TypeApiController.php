@@ -1,6 +1,6 @@
 <?php
 
-namespace Evrinoma\ExchangeTypeBundle\Controller;
+namespace Evrinoma\ExchangeRateBundle\Controller;
 
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
