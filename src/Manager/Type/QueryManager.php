@@ -35,12 +35,33 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     public function criteria(TypeApiDtoInterface $dto): array
     {
         try {
-            $rate = $this->repository->findByCriteria($dto);
+            $type = $this->repository->findByCriteria($dto);
         } catch (TypeNotFoundException $e) {
             throw $e;
         }
 
-        return $rate;
+        return $type;
+    }
+
+    /**
+     * @param TypeApiDtoInterface $dto
+     *
+     * @return TypeInterface
+     * @throws TypeProxyException
+     */
+    public function proxy(TypeApiDtoInterface $dto): TypeInterface
+    {
+        try {
+            if ($dto->hasId()) {
+                $type = $this->repository->proxy((string)$dto->getId());
+            } else {
+                throw new TypeProxyException('entity does\'t have id');
+            }
+        } catch (TypeProxyException $e) {
+            throw $e;
+        }
+
+        return $type;
     }
 //endregion Public
 
@@ -59,29 +80,12 @@ final class QueryManager implements QueryManagerInterface, RestInterface
     public function get(TypeApiDtoInterface $dto): TypeInterface
     {
         try {
-            $rate = $this->repository->find($dto->getId());
+            $type = $this->repository->find($dto->getId());
         } catch (TypeNotFoundException $e) {
             throw $e;
         }
 
-        return $rate;
-    }
-
-    /**
-     * @param TypeApiDtoInterface $dto
-     *
-     * @return TypeInterface
-     * @throws TypeProxyException
-     */
-    public function proxy(TypeApiDtoInterface $dto): TypeInterface
-    {
-        try {
-            $rate = $this->repository->proxy($dto->getId());
-        } catch (TypeProxyException $e) {
-            throw $e;
-        }
-
-        return $rate;
+        return $type;
     }
 //endregion Getters/Setters
 }

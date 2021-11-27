@@ -42,6 +42,27 @@ final class QueryManager implements QueryManagerInterface, RestInterface
 
         return $rate;
     }
+
+    /**
+     * @param RateApiDtoInterface $dto
+     *
+     * @return RateInterface
+     * @throws RateProxyException
+     */
+    public function proxy(RateApiDtoInterface $dto): RateInterface
+    {
+        try {
+            if ($dto->hasId()) {
+                $rate = $this->repository->proxy((string)$dto->getId());
+            } else {
+                throw new RateProxyException('entity does\'t have id');
+            }
+        } catch (RateProxyException $e) {
+            throw $e;
+        }
+
+        return $rate;
+    }
 //endregion Public
 
 //region SECTION: Getters/Setters
@@ -61,23 +82,6 @@ final class QueryManager implements QueryManagerInterface, RestInterface
         try {
             $rate = $this->repository->find($dto->getId());
         } catch (RateNotFoundException $e) {
-            throw $e;
-        }
-
-        return $rate;
-    }
-
-    /**
-     * @param RateApiDtoInterface $dto
-     *
-     * @return RateInterface
-     * @throws RateProxyException
-     */
-    public function proxy(RateApiDtoInterface $dto): RateInterface
-    {
-        try {
-            $rate = $this->repository->proxy($dto->getId());
-        } catch (RateProxyException $e) {
             throw $e;
         }
 
