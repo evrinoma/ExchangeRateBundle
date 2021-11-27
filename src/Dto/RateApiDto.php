@@ -26,7 +26,7 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
      */
     private ?TypeApiDto $typeApiDto = null;
 
-    private float $value = 0;
+    private ?float $value = null;
 
     private ?\DateTimeImmutable $created = null;
 //endregion Fields
@@ -92,6 +92,22 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
                 yield $newRequest;
             }
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasCreated(): bool
+    {
+        return $this->created !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasValue(): bool
+    {
+        return $this->value !== null;
     }
 
     /**
@@ -163,7 +179,7 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 //endregion SECTION: Dto
 
 //region SECTION: Getters/Setters
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
