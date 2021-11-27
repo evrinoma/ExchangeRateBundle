@@ -63,13 +63,11 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
-     *                  "id":"48",
-     *                  "description":"Интертех",
+     *                  "identity":"RUB",
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto"),
-     *               @OA\Property(property="id",type="string"),
-     *               @OA\Property(property="description",type="string"),
+     *               @OA\Property(property="identity",type="string")
      *            )
      *         )
      *     )
@@ -112,15 +110,13 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *             @OA\Schema(
      *               example={
      *                  "class":"Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto",
-     *                  "active": "b",
      *                  "id":"48",
-     *                  "description":"Интертех",
+     *                  "identity":"EUR",
      *                  },
      *               type="object",
      *               @OA\Property(property="class",type="string",default="Evrinoma\ExchangeTypeBundle\Dto\TypeApiDto"),
      *               @OA\Property(property="id",type="string"),
-     *               @OA\Property(property="description",type="string"),
-     *               @OA\Property(property="active",type="string")
+     *               @OA\Property(property="identity",type="string")
      *            )
      *         )
      *     )
@@ -238,9 +234,9 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *         )
      *     ),
      *      @OA\Parameter(
-     *         description="description",
+     *         description="identity",
      *         in="query",
-     *         name="description",
+     *         name="identity",
      *         @OA\Schema(
      *           type="string",
      *         )
