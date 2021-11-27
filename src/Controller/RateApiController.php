@@ -246,14 +246,6 @@ final class RateApiController extends AbstractApiController implements ApiContro
      *         )
      *     ),
      *      @OA\Parameter(
-     *         description="id Entity",
-     *         in="query",
-     *         name="id",
-     *         @OA\Schema(
-     *           type="string",
-     *         )
-     *     ),
-     *      @OA\Parameter(
      *         description="value",
      *         in="query",
      *         name="value",

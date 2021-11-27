@@ -227,14 +227,6 @@ final class TypeApiController extends AbstractApiController implements ApiContro
      *         )
      *     ),
      *      @OA\Parameter(
-     *         description="id Entity",
-     *         in="query",
-     *         name="id",
-     *         @OA\Schema(
-     *           type="string",
-     *         )
-     *     ),
-     *      @OA\Parameter(
      *         description="identity",
      *         in="query",
      *         name="identity",
