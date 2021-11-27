@@ -45,6 +45,7 @@ class EvrinomaExchangeRateExtension extends Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        $loader->load('command.yml');
 
         if ($container->getParameter('kernel.environment') !== 'prod') {
             $loader->load('fixtures.yml');
