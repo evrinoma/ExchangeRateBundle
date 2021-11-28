@@ -1,8 +1,79 @@
 #Configuration
 
+преопределение штатного класса сущности
+
+    contractor:
+        db_driver: orm модель данных
+
+        factory_rate: App\Type\Factory\RateFactory фабрика для создания объектов Rate, не достающие значения можно разрешить на уровне Mediator или переопределив фабрику
+        entity_rate: App\Type\Entity\Rate сущность
+        dto_rate: App\Type\Dto\RateDto класс dto с которым работает сущность
+
+        factory_type: App\Type\Factory\TypeFactory фабрика для создания объектов Type, не достающие значения можно разрешить на уровне Mediator или переопределив фабрику
+        entity_type: App\Type\Entity\Type сущность
+        dto_type: App\Type\Dto\TypeDto класс dto с которым работает сущность
+
+
 #CQRS model
 
+Actions в контроллере разбиты на две группы
+создание, редактирование, удаление данных
+
+        1. putAction(PUT), postAction(POST), deleteAction(DELETE)
+получение данных
+
+        2. getAction(GET), criteriaAction(GET)
+
+каждый метод работает со своим менеджером
+
+        1. CommandManagerInterface
+        2. QueryManagerInterface
+
+При переопределении штатного класса сущности, дополнение данными осуществляется декорированием, с помощью MediatorInterface
+
+группы  сериализации
+
+    1. api_get_rate - получить rate
+    2. api_post_rate - создать rate
+    3. api_put_rate -  редактировать rate
+
+    4. api_get_type - получить type
+    5. api_post_type - создать type
+    6. api_put_type -  редактировать type
+
 #Статусы:
+
+    RATE
+    создание:
+        котировка валюты создана HTTP_CREATED 201
+    обновление:
+        котировка валюты обновлена HTTP_OK 200
+    удаление:
+        котировка валюты удалена HTTP_ACCEPTED 202
+    получение:
+        котировка(и) валют найдена(ы) HTTP_OK 200
+    ошибки:
+        если котировка валюты не найден TypeNotFoundException возвращает HTTP_NOT_FOUND 404
+        если котировка валюты не уникален UniqueConstraintViolationException возвращает HTTP_CONFLICT 409
+        если котировка валюты не прошла валидацию TypeInvalidException возвращает HTTP_UNPROCESSABLE_ENTITY 422
+        если котировка валюты не может быть сохранена TypeCannotBeSavedException возвращает HTTP_NOT_IMPLEMENTED 501
+        все остальные ошибки возвращаются как HTTP_BAD_REQUEST 400
+
+    TYPE
+    создание:
+        тип валюты создан HTTP_CREATED 201
+    обновление:
+        тип валюты обновлен HTTP_OK 200
+    удаление:
+        тип валюты удален HTTP_ACCEPTED 202
+    получение:
+        тип(ы) валют найден(ы) HTTP_OK 200
+    ошибки:
+        если тип валюты не найден TypeNotFoundException возвращает HTTP_NOT_FOUND 404
+        если тип валюты не уникален UniqueConstraintViolationException возвращает HTTP_CONFLICT 409
+        если тип валюты не прошел валидацию TypeInvalidException возвращает HTTP_UNPROCESSABLE_ENTITY 422
+        если тип валюты не может быть сохранен TypeCannotBeSavedException возвращает HTTP_NOT_IMPLEMENTED 501
+        все остальные ошибки возвращаются как HTTP_BAD_REQUEST 400
 
 #Тесты:
 
