@@ -67,13 +67,3 @@ services:
   Evrinoma\ExchangeRateBundle\Mediator\Rate\QueryMediatorInterface:
     alias: evrinoma.exchange_rate.rate.query.mediator
 
-#  evrinoma.exchange_rate.form.rest.rate:
-#    class: Evrinoma\ExchangeRateBundle\Form\Rest\RateChoiceRate
-#    arguments:
-#      - '@evrinoma.exchange_rate.rate.query.manager'
-#    tags: { - name: form.rate }
-#
-#  Evrinoma\ExchangeRateBundle\Form\Rest\RateChoiceRate:
-#    alias: evrinoma.exchange_rate.form.rest.rate
-#    public: true
-
