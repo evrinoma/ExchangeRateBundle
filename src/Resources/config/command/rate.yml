@@ -1,9 +1,1 @@
 services:
-  evrinoma.exchange_rate.rate.command.pull:
-    class: Evrinoma\ExchangeRateBundle\Command\PullCommand
-#    arguments: [ '@' ]
-    tags: { - name: console.command }'
-
-  Evrinoma\ExchangeRateBundle\Command\PullCommand:
-    alias: evrinoma.exchange_rate.rate.command.pull
-    public: true
