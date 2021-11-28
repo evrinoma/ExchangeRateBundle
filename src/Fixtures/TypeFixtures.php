@@ -14,7 +14,7 @@ final class TypeFixtures extends Fixture implements FixtureGroupInterface, Order
     private array $data = [
         ['identity' => 'RUB'],
         ['identity' => 'EUR'],
-        ['identity' => 'GBP',],
+        ['identity' => 'GBP'],
         ['identity' => 'RWF'],
         ['identity' => 'USD'],
         ['identity' => 'JPY'],
