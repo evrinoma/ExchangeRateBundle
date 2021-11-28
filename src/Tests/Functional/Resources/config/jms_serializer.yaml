@@ -1,0 +1,6 @@
+jms_serializer:
+  metadata:
+    directories:
+      ExchangeRateBundle:
+        namespace_prefix: "Evrinoma\\ExchangeRateBundle"
+        path: '%kernel.root_dir%/Resources/config/serializer/ExchangeRateBundle'
