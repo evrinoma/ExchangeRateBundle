@@ -5,7 +5,6 @@ namespace Evrinoma\ExchangeRateBundle\Controller;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface;
-use Evrinoma\ExchangeRateBundle\Exception\Type\TypeCannotBeCreatedException;
 use Evrinoma\ExchangeRateBundle\Exception\Type\TypeCannotBeSavedException;
 use Evrinoma\ExchangeRateBundle\Exception\Type\TypeInvalidException;
 use Evrinoma\ExchangeRateBundle\Exception\Type\TypeNotFoundException;
