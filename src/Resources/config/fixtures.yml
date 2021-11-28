@@ -1,2 +1,7 @@
 services:
 
+  evrinoma.exchange_rate.fixtures.type:
+    class: Evrinoma\ExchangeRateBundle\Fixtures\TypeFixtures
+    tags:
+      - { name: doctrine.fixture.orm }
+
