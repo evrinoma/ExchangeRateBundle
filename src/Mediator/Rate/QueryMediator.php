@@ -48,8 +48,7 @@ class QueryMediator extends AbstractQueryMediator implements QueryMediatorInterf
         }
         if ($dto->hasRangeApiDto() && $dto->getRangeApiDto()->hasRange()) {
             $range = $dto->getRangeApiDto();
-            $builder->andWhere($alias.'.created :created >= :last')
-                ->where($alias.'.created BETWEEN :from AND :to')
+            $builder->andWhere($alias.'.created BETWEEN :from AND :to')
                 ->setParameter('from', $range->getFrom(), Types::DATETIME_IMMUTABLE)
                 ->setParameter('to', $range->getTo(), Types::DATETIME_IMMUTABLE);
         }
