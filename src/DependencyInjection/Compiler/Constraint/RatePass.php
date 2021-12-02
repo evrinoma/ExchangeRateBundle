@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 class RatePass extends AbstractConstraint implements CompilerPassInterface
 {
-    public const EXCHANGE_RATE_RATE_CONSTRAINT = 'evrinoma.exchange_rate.constraint.owner';
+    public const EXCHANGE_RATE_RATE_CONSTRAINT = 'evrinoma.exchange_rate.constraint.rate';
 
     protected static string $alias = self::EXCHANGE_RATE_RATE_CONSTRAINT;
     protected static string $class = RateValidator::class;
