@@ -1,0 +1,9 @@
+services:
+  evrinoma.exchange_rate.test.functional.action.rate:
+    class: Evrinoma\ExchangeRateBundle\Tests\Functional\Action\Rate\BaseRate
+    public: true
+    arguments:
+
+  Evrinoma\ExchangeRateBundle\Tests\Functional\Action\Rate\BaseRate:
+    alias: evrinoma.exchange_rate.test.functional.action.rate
+    public: true
