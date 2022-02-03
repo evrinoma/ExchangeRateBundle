@@ -32,15 +32,15 @@ class MapEntityPass extends AbstractMapEntity implements CompilerPassInterface
 
         if ((strpos($entityType, EvrinomaExchangeRateExtension::ENTITY) !== false)) {
             $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Type', '%s/Entity/Type');
-            $this->addResolveTargetEntity([BaseType::class => TypeInterface::class,], false);
         }
+        $this->addResolveTargetEntity([$entityType => [TypeInterface::class => [],],], false);
 
         $entityRate = $container->getParameter('evrinoma.'.EvrinomaExchangeRateBundle::EXCHANGE_RATE_BUNDLE.'.entity_rate');
 
         if ((strpos($entityRate, EvrinomaExchangeRateExtension::ENTITY) !== false)) {
             $this->loadMetadata($driver, $referenceAnnotationReader, '%s/Model/Rate', '%s/Entity/Rate');
-            $this->addResolveTargetEntity([BaseRate::class => RateInterface::class,], false);
         }
+        $this->addResolveTargetEntity([$entityRate => [RateInterface::class => [],],], false);
     }
 
 
