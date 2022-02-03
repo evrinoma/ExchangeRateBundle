@@ -3,20 +3,29 @@
 namespace Evrinoma\ExchangeRateBundle\Dto;
 
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\IdInterface;
+use Evrinoma\DtoCommon\ValueObject\Immutable\IdInterface;
 
 interface RateApiDtoInterface extends DtoInterface, IdInterface
 {
+    public const CREATED  = 'timestamp';
+    public const VALUE    = 'value';
 //region SECTION: Public
     /**
      * @return bool
      */
     public function hasCreated(): bool;
-
     /**
      * @return bool
      */
     public function hasValue(): bool;
+    /**
+     * @return bool
+     */
+    public function hasBaseApiDto(): bool;
+    /**
+     * @return bool
+     */
+    public function hasTypApiDto(): bool;
 //endregion Public
 
 //region SECTION: Dto
@@ -24,31 +33,18 @@ interface RateApiDtoInterface extends DtoInterface, IdInterface
      * @return bool
      */
     public function hasRangeApiDto(): bool;
-
     /**
      * @return TypeApiDtoInterface
      */
     public function getBaseApiDto(): TypeApiDtoInterface;
-
     /**
      * @return TypeApiDtoInterface
      */
     public function getTypeApiDto(): TypeApiDtoInterface;
-
     /**
      * @return RangeApiDtoInterface
      */
     public function getRangeApiDto(): RangeApiDtoInterface;
-
-    /**
-     * @return bool
-     */
-    public function hasBaseApiDto(): bool;
-
-    /**
-     * @return bool
-     */
-    public function hasTypApiDto(): bool;
 //endregion SECTION: Dto
 
 //region SECTION: Getters/Setters

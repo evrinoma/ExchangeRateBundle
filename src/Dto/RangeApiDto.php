@@ -4,7 +4,6 @@ namespace Evrinoma\ExchangeRateBundle\Dto;
 
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\ExchangeRateBundle\Model\ModelInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class RangeApiDto extends AbstractDto implements RangeApiDtoInterface
@@ -46,8 +45,8 @@ class RangeApiDto extends AbstractDto implements RangeApiDtoInterface
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $from = $request->get(ModelInterface::FROM);
-            $to   = $request->get(ModelInterface::TO);
+            $from = $request->get(RangeApiDtoInterface::FROM);
+            $to   = $request->get(RangeApiDtoInterface::TO);
 
             if ($from) {
                 $this->setFrom((new \DateTimeImmutable)->setTimestamp((int)$from));
@@ -81,26 +80,18 @@ class RangeApiDto extends AbstractDto implements RangeApiDtoInterface
 
     /**
      * @param \DateTimeImmutable|null $from
-     *
-     * @return RangeApiDtoInterface
      */
-    public function setFrom(?\DateTimeImmutable $from): RangeApiDtoInterface
+    protected function setFrom(?\DateTimeImmutable $from): void
     {
         $this->from = $from;
-
-        return $this;
     }
 
     /**
      * @param \DateTimeImmutable|null $to
-     *
-     * @return RangeApiDtoInterface
      */
-    public function setTo(?\DateTimeImmutable $to): RangeApiDtoInterface
+    protected function setTo(?\DateTimeImmutable $to): void
     {
         $this->to = $to;
-
-        return $this;
     }
 //endregion Getters/Setters
 }

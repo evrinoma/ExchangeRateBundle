@@ -6,6 +6,9 @@ use Evrinoma\DtoBundle\Dto\DtoInterface;
 
 interface RangeApiDtoInterface extends DtoInterface
 {
+    public const FROM     = 'from';
+    public const TO       = 'to';
+    public const RANGE = 'range';
 //region SECTION: Public
     /**
      * @return bool

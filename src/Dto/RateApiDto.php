@@ -5,8 +5,7 @@ namespace Evrinoma\ExchangeRateBundle\Dto;
 use Evrinoma\DtoBundle\Annotation\Dto;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\DtoCommon\ValueObject\IdTrait;
-use Evrinoma\ExchangeRateBundle\Model\ModelInterface;
+use Evrinoma\DtoCommon\ValueObject\Mutable\IdTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 class RateApiDto extends AbstractDto implements RateApiDtoInterface
@@ -40,38 +39,18 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 //region SECTION: Protected
     /**
      * @param float $value
-     *
-     * @return RateApiDtoInterface
      */
-    protected function setValue(float $value): RateApiDtoInterface
+    protected function setValue(float $value): void
     {
         $this->value = $value;
-
-        return $this;
     }
 
     /**
      * @param \DateTimeImmutable $created
-     *
-     * @return RateApiDtoInterface
      */
-    protected function setCreated(\DateTimeImmutable $created): RateApiDtoInterface
+    protected function setCreated(\DateTimeImmutable $created): void
     {
         $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * @param int|null $id
-     *
-     * @return RateApiDtoInterface
-     */
-    protected function setId(?int $id): RateApiDtoInterface
-    {
-        $this->id = $id;
-
-        return $this;
     }
 //endregion Protected
 
@@ -100,7 +79,7 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     public function genRequestTypeApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $type = $request->get('type');
+            $type = $request->get(TypeApiDtoInterface::TYPE);
             if ($type) {
                 $newRequest                    = $this->getCloneRequest();
                 $type[DtoInterface::DTO_CLASS] = TypeApiDto::class;
@@ -117,7 +96,7 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     public function genRequestBaseApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $type = $request->get('base');
+            $type = $request->get(TypeApiDtoInterface::BASE);
             if ($type) {
                 $newRequest                    = $this->getCloneRequest();
                 $type[DtoInterface::DTO_CLASS] = TypeApiDto::class;
@@ -134,7 +113,7 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
     public function genRequestRangeApiDto(?Request $request): ?\Generator
     {
         if ($request) {
-            $type = $request->get('range');
+            $type = $request->get(RangeApiDtoInterface::RANGE);
             if ($type) {
                 $newRequest                    = $this->getCloneRequest();
                 $type[DtoInterface::DTO_CLASS] = RangeApiDto::class;
@@ -171,38 +150,26 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 
     /**
      * @param RangeApiDtoInterface|null $rangeApiDto
-     *
-     * @return RateApiDtoInterface
      */
-    public function setRangeApiDto(?RangeApiDtoInterface $rangeApiDto): RateApiDtoInterface
+    public function setRangeApiDto(?RangeApiDtoInterface $rangeApiDto): void
     {
         $this->rangeApiDto = $rangeApiDto;
-
-        return $this;
     }
 
     /**
      * @param TypeApiDtoInterface|null $baseApiDto
-     *
-     * @return RateApiDtoInterface
      */
-    public function setBaseApiDto(?TypeApiDtoInterface $baseApiDto): RateApiDtoInterface
+    public function setBaseApiDto(?TypeApiDtoInterface $baseApiDto): void
     {
         $this->baseApiDto = $baseApiDto;
-
-        return $this;
     }
 
     /**
      * @param TypeApiDtoInterface|null $typeApiDto
-     *
-     * @return RateApiDtoInterface
      */
-    public function setTypeApiDto(?TypeApiDtoInterface $typeApiDto): RateApiDtoInterface
+    public function setTypeApiDto(?TypeApiDtoInterface $typeApiDto): void
     {
         $this->typeApiDto = $typeApiDto;
-
-        return $this;
     }
 
     public function toDto(Request $request): DtoInterface
@@ -210,9 +177,9 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
         $class = $request->get(DtoInterface::DTO_CLASS);
 
         if ($class === $this->getClass()) {
-            $id      = $request->get(ModelInterface::ID);
-            $created = $request->get(ModelInterface::CREATED);
-            $value   = $request->get(ModelInterface::VALUE);
+            $id      = $request->get(RateApiDtoInterface::ID);
+            $created = $request->get(RateApiDtoInterface::CREATED);
+            $value   = $request->get(RateApiDtoInterface::VALUE);
 
             if ($created) {
                 $this->setCreated((new \DateTimeImmutable)->setTimestamp((int)$created));

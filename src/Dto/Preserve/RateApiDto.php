@@ -4,7 +4,6 @@ namespace Evrinoma\ExchangeRateBundle\Dto\Preserve;
 
 use Evrinoma\ExchangeRateBundle\Dto\RangeApiDtoInterface as BaseRangeApiDtoInterface;
 use Evrinoma\ExchangeRateBundle\Dto\RateApiDto as BaseRateApiDto;
-use Evrinoma\ExchangeRateBundle\Dto\RateApiDtoInterface as BaseRateApiDtoInterface;
 use Evrinoma\ExchangeRateBundle\Dto\TypeApiDto;
 use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface as BaseTypeApiDtoInterface;
 
@@ -13,54 +12,44 @@ final class RateApiDto extends BaseRateApiDto implements RateApiDtoInterface
 //region SECTION: Dto
     /**
      * @param TypeApiDto|null $baseApiDto
-     *
-     * @return RateApiDtoInterface
      */
-    public function setBaseApiDto(?BaseTypeApiDtoInterface $baseApiDto): BaseRateApiDtoInterface
+    public function setBaseApiDto(?BaseTypeApiDtoInterface $baseApiDto): void
     {
-        return parent::setBaseApiDto($baseApiDto);
+        parent::setBaseApiDto($baseApiDto);
     }
 
     /**
      * @param TypeApiDto|null $typeApiDto
-     *
-     * @return RateApiDtoInterface
      */
-    public function setTypeApiDto(?BaseTypeApiDtoInterface $typeApiDto): BaseRateApiDtoInterface
+    public function setTypeApiDto(?BaseTypeApiDtoInterface $typeApiDto): void
     {
-        return parent::setTypeApiDto($typeApiDto);
+        parent::setTypeApiDto($typeApiDto);
     }
 
     /**
      * @param BaseRangeApiDtoInterface|null $rangeApiDto
-     *
-     * @return BaseRateApiDtoInterface
      */
-    public function setRangeApiDto(?BaseRangeApiDtoInterface $rangeApiDto): BaseRateApiDtoInterface
+    public function setRangeApiDto(?BaseRangeApiDtoInterface $rangeApiDto): void
     {
-        return parent::setRangeApiDto($rangeApiDto);
+        parent::setRangeApiDto($rangeApiDto);
     }
 //endregion SECTION: Dto
 
 //region SECTION: Getters/Setters
     /**
      * @param float $value
-     *
-     * @return RateApiDtoInterface
      */
-    public function setValue(float $value): BaseRateApiDtoInterface
+    public function setValue(float $value): void
     {
-        return parent::setValue($value);
+        parent::setValue($value);
     }
 
     /**
      * @param \DateTimeImmutable|null $created
-     *
-     * @return RateApiDtoInterface
      */
-    public function setCreated(\DateTimeImmutable $created): BaseRateApiDtoInterface
+    public function setCreated(\DateTimeImmutable $created): void
     {
-        return parent::setCreated($created);
+        parent::setCreated($created);
     }
 //endregion Getters/Setters
 }

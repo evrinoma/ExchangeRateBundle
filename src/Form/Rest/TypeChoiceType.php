@@ -3,9 +3,9 @@
 namespace Evrinoma\ExchangeRateBundle\Form\Rest;
 
 use Evrinoma\ExchangeRateBundle\Dto\TypeApiDto;
+use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface;
 use Evrinoma\ExchangeRateBundle\Exception\Type\TypeNotFoundException;
 use Evrinoma\ExchangeRateBundle\Manager\Type\QueryManagerInterface;
-use Evrinoma\ExchangeRateBundle\Model\ModelInterface;
 use Evrinoma\UtilsBundle\Form\Rest\RestChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\Options;
@@ -34,7 +34,7 @@ class TypeChoiceType extends AbstractType
                 if ($options->offsetExists('data')) {
                     $criteria = $this->queryManager->criteria(new TypeApiDto());
                     switch($options->offsetGet('data')) {
-                        case  ModelInterface::IDENTITY:
+                        case  TypeApiDtoInterface::IDENTITY:
                             foreach ($criteria as $entity) {
                                 $value[] = $entity->getIdentity();
                             }

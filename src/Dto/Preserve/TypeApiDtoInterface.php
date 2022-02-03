@@ -2,23 +2,9 @@
 
 namespace Evrinoma\ExchangeRateBundle\Dto\Preserve;
 
-use Evrinoma\ExchangeRateBundle\Dto\TypeApiDtoInterface as BaseTypeApiDtoInterface;
+use Evrinoma\DtoCommon\ValueObject\Mutable\IdentityInterface;
+use Evrinoma\DtoCommon\ValueObject\Mutable\IdInterface;
 
-interface TypeApiDtoInterface
+interface TypeApiDtoInterface extends IdentityInterface, IdInterface
 {
-//region SECTION: Getters/Setters
-    /**
-     * @param string $identity
-     *
-     * @return BaseTypeApiDtoInterface
-     */
-    public function setIdentity(string $identity): BaseTypeApiDtoInterface;
-
-    /**
-     * @param int|null $id
-     *
-     * @return BaseTypeApiDtoInterface
-     */
-    public function setId(?int $id): BaseTypeApiDtoInterface;
-//endregion Getters/Setters
 }
