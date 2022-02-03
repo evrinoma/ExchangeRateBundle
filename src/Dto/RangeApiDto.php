@@ -80,18 +80,27 @@ class RangeApiDto extends AbstractDto implements RangeApiDtoInterface
 
     /**
      * @param \DateTimeImmutable|null $from
+     *
+     * @return DtoInterface
      */
-    protected function setFrom(?\DateTimeImmutable $from): void
+    protected function setFrom(?\DateTimeImmutable $from): DtoInterface
     {
         $this->from = $from;
+
+        return $this;
     }
 
     /**
      * @param \DateTimeImmutable|null $to
+     *
+     * @return DtoInterface
      */
-    protected function setTo(?\DateTimeImmutable $to): void
+    protected function setTo(?\DateTimeImmutable $to): DtoInterface
     {
         $this->to = $to;
+
+        return $this;
+
     }
 //endregion Getters/Setters
 }

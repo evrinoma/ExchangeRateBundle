@@ -39,18 +39,26 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 //region SECTION: Protected
     /**
      * @param float $value
+     *
+     * @return DtoInterface
      */
-    protected function setValue(float $value): void
+    protected function setValue(float $value): DtoInterface
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**
      * @param \DateTimeImmutable $created
+     *
+     * @return DtoInterface
      */
-    protected function setCreated(\DateTimeImmutable $created): void
+    protected function setCreated(\DateTimeImmutable $created): DtoInterface
     {
         $this->created = $created;
+
+        return $this;
     }
 //endregion Protected
 
@@ -150,26 +158,38 @@ class RateApiDto extends AbstractDto implements RateApiDtoInterface
 
     /**
      * @param RangeApiDtoInterface|null $rangeApiDto
+     *
+     * @return DtoInterface
      */
-    public function setRangeApiDto(?RangeApiDtoInterface $rangeApiDto): void
+    public function setRangeApiDto(?RangeApiDtoInterface $rangeApiDto): DtoInterface
     {
         $this->rangeApiDto = $rangeApiDto;
+
+        return $this;
     }
 
     /**
      * @param TypeApiDtoInterface|null $baseApiDto
+     *
+     * @return DtoInterface
      */
-    public function setBaseApiDto(?TypeApiDtoInterface $baseApiDto): void
+    public function setBaseApiDto(?TypeApiDtoInterface $baseApiDto): DtoInterface
     {
         $this->baseApiDto = $baseApiDto;
+
+        return $this;
     }
 
     /**
      * @param TypeApiDtoInterface|null $typeApiDto
+     *
+     * @return DtoInterface
      */
-    public function setTypeApiDto(?TypeApiDtoInterface $typeApiDto): void
+    public function setTypeApiDto(?TypeApiDtoInterface $typeApiDto): DtoInterface
     {
         $this->typeApiDto = $typeApiDto;
+
+        return $this;
     }
 
     public function toDto(Request $request): DtoInterface
